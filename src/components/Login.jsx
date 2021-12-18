@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../App.css";
 
 const Login = (props) => {
   const { onclick } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const login = (e) => {
     e.preventDefault();
@@ -16,13 +17,11 @@ const Login = (props) => {
     console.log("pass", pass);
     if (!email || !password) {
       alert("Please enter details");
-      return 0;
     } else if (password !== pass || email !== mail) {
       alert("Please enter correct creddentials");
-      return 0;
     } else {
       alert("Login Successful");
-      return 1;
+      history.push("/home");
     }
   };
 
